@@ -72,3 +72,7 @@ use rake task to fetch data from `paymentsnz.co.nz` and generate the data file (
 bundle exec rake bsb_nz:generate_branch_list
 ```
 
+The rake task will verify the md5 of the data file, if it is changed, it will show
+```bash
+"!!! Data file changed. please update GEM VERSION !!!"
+```
