@@ -1,8 +1,8 @@
 # BsbNz
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bsb_nz`. To experiment with that code, run `bin/console` for an interactive prompt.
+BSB lookup for New Zealand bank branches, and its data source is from [paymentsnz.co.nz](https://www.paymentsnz.co.nz/resources/industry-registers/bank-branch-register)
 
-TODO: Delete this and the text above, and describe your gem
+It's heavily inspired from the [BSB gem](https://github.com/zeptofs/bsb) for Australia
 
 ## Installation
 
@@ -22,14 +22,53 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Lookup
 
-## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+To lookup a BSB number:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+BsbNz.lookup "010004"
+```
 
-## Contributing
+and got
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/bsb_nz.
+```ruby
+{
+    :bank_number=>"01",
+    :branch_number=>"0004",
+    :national_clearing_code=>"010004",
+    :bic=>nil,
+    :bank_name=>"ANZ Bank New Zealand",
+    :branch_information=>"ANZ Retail 2",
+    :city=>"Wellington",
+    :physical_address_1=>"215-229 Lambton Quay",
+    :physical_address_2=>nil,
+    :physical_address_3=>nil,
+    :physical_address_4=>nil,
+    :post_code=>"6001",
+    :location=>nil,
+    :country_name=>"New Zealand",
+    :pob_number=>"PO Box 1393",
+    :pob_location_1=>"Wellington",
+    :pob_location_2=>nil,
+    :pob_location_3=>nil,
+    :pob_post_code=>"6140",
+    :pob_country=>"New Zealand",
+    :std=>"(04)",
+    :phone=>"0800 269 296",
+    :fax=>"496-7360",
+    :retail=>nil,
+    :bic_plus_indicator=>"Y",
+    :latest_status=>"A"
+}
+```
+
+### Update source
+
+use rake task to fetch data from `paymentsnz.co.nz` and generate the data file (default to `lib/data/bsb_branch_list.json`)
+
+```bash
+bundle exec rake bsb_nz:generate_branch_list
+```
+
