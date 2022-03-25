@@ -12,11 +12,11 @@ module BsbNz
       data_hash[bsb]
     end
 
-    private
-
     def normalize(str)
       str.gsub(/[^\d]/, "")
     end
+
+    private
 
     def data_hash
       @data_hash ||= JSON.parse(
