@@ -2,7 +2,7 @@
 name: Update bank/branch data
 on:
   schedule:
-    - cron: "0 0 * * *" # midnightly UTC
+    - cron: "1 0 * * *" # 1am UTC
 jobs:
   update_bank_branch_data:
     runs-on: ubuntu-latest
@@ -25,10 +25,10 @@ jobs:
             lib/data/bsb_branch_list.json
             lib/data/bsb_branch_list.md5
       - name: Bump gem version
-        if: steps.verify_changed_files.outputs.files_changed == "true"
+        if: steps.verify_changed_files.outputs.files_changed == 'true'
         run: bin/bump_gem_version
       - name: Create pull request
-        if: steps.verify_changed_files.outputs.files_changed == "true"
+        if: steps.verify_changed_files.outputs.files_changed == 'true'
         uses: peter-evans/create-pull-request@v4
         with:
           title: "Update bank/branch data [via update_bank_branch_data Github action]"
