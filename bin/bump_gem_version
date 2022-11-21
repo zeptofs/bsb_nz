@@ -6,15 +6,19 @@ set -euo pipefail
 version_file_path="lib/bsb_nz/version.rb"
 
 main() {
-  unchanging_version_part="$(current_gem_version | grep -o '^\d\+\.\d\+\.')"
-  changing_version_part="$(current_gem_version | grep -o '\d\+$')"
+  unchanging_version_part="$(current_gem_version | match_only '^\d+\.\d+\.')"
+  changing_version_part="$(current_gem_version | match_only '\d+$')"
   new_version="$unchanging_version_part$((changing_version_part + 1))"
   echo "Bumping to v$new_version"
-  sed -i "" "/VERSION/s/.*/  VERSION = \"$new_version\"/" "$version_file_path"
+  sed -i "/VERSION/s/.*/  VERSION = \"$new_version\"/" "$version_file_path"
 }
 
 current_gem_version() {
-  git grep "VERSION" "$version_file_path" | grep -o '\d\+\.\d\+\.\d\+'
+  git grep "VERSION" "$version_file_path" | match_only '\d+\.\d+\.\d+'
+}
+
+match_only() {
+  grep --only-matching --perl-regexp "$1"
 }
 
 main
