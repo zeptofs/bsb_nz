@@ -2,7 +2,7 @@
 name: Update bank/branch data
 on:
   schedule:
-    - cron: "1 0 * * *" # 1am UTC
+    - cron: "0 0 * * *" # midnightly UTC
 jobs:
   update_bank_branch_data:
     runs-on: ubuntu-latest
@@ -31,7 +31,8 @@ jobs:
         if: steps.verify_changed_files.outputs.files_changed == 'true'
         uses: peter-evans/create-pull-request@v4
         with:
-          title: "Update bank/branch data [via update_bank_branch_data Github action]"
+          title: "Update bank/branch data"
           team-reviewers: "@zeptofs/team-send"
+          branch: "update-bank-branch-data"
           commit-message: "Update bank/branch data"
           delete-branch: true
