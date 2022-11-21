@@ -31,7 +31,7 @@ jobs:
         if: steps.verify_changed_files.outputs.files_changed == 'true'
         uses: peter-evans/create-pull-request@v4
         with:
-          title: "Update bank/branch data [via update_bank_branch_data Github action]"
+          title: "Update bank/branch data"
           team-reviewers: "@zeptofs/team-send"
           commit-message: "Update bank/branch data"
           delete-branch: true
