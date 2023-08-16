@@ -32,7 +32,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           title: "Update bank/branch data"
-          team-reviewers: "@zeptofs/team-send"
+          team-reviewers: "@zeptofs/team-cent"
           branch: "update-bank-branch-data"
           commit-message: "Update bank/branch data"
           delete-branch: true
