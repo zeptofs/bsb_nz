@@ -20,7 +20,7 @@ module BsbNz
 
     def data_hash
       @data_hash ||= JSON.parse(
-        IO.read(File.expand_path("../lib/data/bsb_branch_list.json", __dir__)),
+        File.read(File.expand_path("../lib/data/bsb_branch_list.json", __dir__)),
         symbolize_names: true
       ).stringify_keys
     end
