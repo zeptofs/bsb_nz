@@ -3,9 +3,6 @@ name: Update bank/branch data
 on:
   schedule:
     - cron: "0 0 * * *" # midnightly UTC
-  push:
-    branches:
-      - kb/gh_actions
 jobs:
   update_bank_branch_data:
     runs-on: ubuntu-latest
