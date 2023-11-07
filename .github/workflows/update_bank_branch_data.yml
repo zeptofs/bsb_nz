@@ -39,4 +39,4 @@ jobs:
           branch: "update-bank-branch-data"
           commit-message: "Update bank/branch data"
           delete-branch: true
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.ACTIONS_GITHUB_TOKEN }}"
