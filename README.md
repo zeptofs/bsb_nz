@@ -79,7 +79,7 @@ The rake task will verify the md5 of the data file, if it is changed, it will sh
 
 ### Troubleshooting Failed GH Actions
 A GH PAT is required to provide write access to the repo from the create-pull-request step.
-When an error similar to this follow is thrown on the GH action it indicates the PAT has expired
+When an error similar to the following is thrown on the GH action it indicates the PAT has expired.
 
 ```
 remote: Permission to zeptofs/bsb_nz.git denied to github-actions[bot].
