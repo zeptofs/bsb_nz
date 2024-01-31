@@ -29,7 +29,7 @@ jobs:
         run: bin/bump_gem_version
       - name: Create pull request
         if: steps.verify_changed_files.outputs.files_changed == 'true'
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           title: "Update bank/branch data"
           team-reviewers: "@zeptofs/team-cent"
