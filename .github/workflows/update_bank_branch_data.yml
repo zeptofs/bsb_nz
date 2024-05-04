@@ -18,7 +18,7 @@ jobs:
           bundle install
           bundle exec rake bsb_nz:generate_branch_list
       - name: Verify changed files
-        uses: tj-actions/verify-changed-files@v19
+        uses: tj-actions/verify-changed-files@v20
         id: verify_changed_files
         with:
           files: |
